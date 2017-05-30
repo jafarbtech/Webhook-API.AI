@@ -36,7 +36,7 @@ http.get(url, function(res){
     res.on('end', function(){
         var fbResponse = JSON.parse(body);
         console.log("Got a response: ", fbResponse);
-        speech='Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature;
+        speech='Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text;
     });
 }).on('error', function(e){
       console.log("Got an error: ", e);
