@@ -21,8 +21,8 @@ restService.post('/echo', function(req, res) {
     });
     }else if(req.body.action.type === 'weather') {
         var speech='Seems like some problem. Speak again.';
-         if(req.body.result && req.body.result.parameters && req.body.result.parameters.echoText){
-        var url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text=%27'+escape()+'%27)&format=json';
+         if(req.body.result && req.body.result.parameters && req.body.result.parameters.city){
+        var url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text=%27'+escape(req.body.result.parameters.city)+'%27)&format=json';
 
 http.get(url, function(res){
     var body = '';
