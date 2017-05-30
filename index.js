@@ -13,14 +13,14 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
   console.log(req.body);
-    if(req.body.action.type === 'echo') {
+    if(req.body.result.action === 'echo') {
     var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
     return res.json({
         speech: speech,
         displayText: speech,
         source: 'webhook-echo-sample'
     });
-    }else if(req.body.action.type === 'weather') {
+    }else if(req.body.result.action === 'weather') {
         var speech='Seems like some problem. Speak again.';
          if(req.body.result && req.body.result.parameters && req.body.result.parameters.city){
         var url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text=%27'+escape(req.body.result.parameters.city)+'%27)&format=json';
