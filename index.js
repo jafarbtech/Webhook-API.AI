@@ -38,16 +38,21 @@ restService.post('/echo', function(req, res) {
                     speech = 'Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature;
                     //console.log("Got a response: ", body);
                     console.log("speech: ", speech);
+                    return res.json({
+                        speech: speech,
+                        displayText: speech,
+                        source: 'webhook-echo-sample'
+                    });
                 });
             }).on('error', function(e) {
                 console.log("Got an error: ", e);
+                return res.json({
+                    speech: speech,
+                    displayText: speech,
+                    source: 'webhook-echo-sample'
+                });
             });
         }
-        return res.json({
-            speech: speech,
-            displayText: speech,
-            source: 'webhook-echo-sample'
-        });
     }
 });
 
