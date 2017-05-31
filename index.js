@@ -47,7 +47,7 @@ restService.post('/echo', function(req, res) {
 });
 var invokeAndGetResponse = function(city,callback){
     var url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text=%27' + escape(city) + '%27)&format=json';
-            //console.log("url: ", url);
+            console.log("url: ", url);
             http.get(url, function(res) {
                 var body = '';
 
