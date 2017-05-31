@@ -13,7 +13,7 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
-    console.log(req.body);
+    //console.log(req.body);
     if (req.body.result.action === 'echo') {
         var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
         return res.json({
@@ -34,9 +34,9 @@ restService.post('/echo', function(req, res) {
                 });
 
                 res.on('end', function() {
-                    speech = 'Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature;
                     var fbResponse = JSON.parse(body);
-                    console.log("Got a response: ", body);
+                    speech = 'Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature;
+                    //console.log("Got a response: ", body);
                     console.log("speech: ", speech);
                 });
             }).on('error', function(e) {
