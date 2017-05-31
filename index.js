@@ -22,7 +22,7 @@ restService.post('/echo', function(req, res) {
             source: 'webhook-echo-sample'
         });
     } else if (req.body.result.action === 'weather') {
-        var speech = 'Seems like some problem. Speak again.';
+        var speech = 'Seems like some problem. Speak1 again.';
         if (req.body.result && req.body.result.parameters && req.body.result.parameters.city) {
             var url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text=%27' + escape(req.body.result.parameters.city) + '%27)&format=json';
 
@@ -34,7 +34,7 @@ restService.post('/echo', function(req, res) {
                 });
 
                 res.on('end', function() {
-                    speech = 'Today in ';  // + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature
+                    speech = 'Today in ';
                     var fbResponse = JSON.parse(body);
                     console.log("Got a response: ", fbResponse);
                 });
