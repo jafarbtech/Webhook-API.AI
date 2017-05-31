@@ -23,7 +23,7 @@ restService.post('/echo', function(req, res) {
         });
     } else if (req.body.result.action === 'weather') {        
         if (req.body.result && req.body.result.parameters && req.body.result.parameters.city) {
-            invokeAndGetResponse(function(err, result){
+            invokeAndGetResponse(req.body.result.parameters.city,function(err, result){
                 if(err){
                     var speech = 'Seems like some problem. Speak again.';
                     console.log("Got an error: ", err);
