@@ -19,7 +19,21 @@ restService.post('/echo', function(req, res) {
         return res.json({
             speech: speech,
             displayText: speech,
-            source: 'webhook-echo-sample'
+            source: 'webhook-echo-sample',
+            data: {
+                google: {
+                    expect_user_response ": true,
+                    is_ssml: true,
+                    permissions_request: {
+                        opt_context: 'echo',
+                        permissions: [
+                            'NAME',
+                            'DEVICE_COARSE_LOCATION',
+                            'DEVICE_PRECISE_LOCATION'
+                        ]
+                    }
+                }
+            }
         });
     } else if (req.body.result.action === 'weather') {
         var speech = 'Seems like some problem. Speak1 again.';
