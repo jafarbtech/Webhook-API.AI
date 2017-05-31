@@ -22,7 +22,7 @@ restService.post('/echo', function(req, res) {
             source: 'webhook-echo-sample',
             data: {
                 google: {
-                    expect_user_response ": true,
+                    expect_user_response: true,
                     is_ssml: true,
                     permissions_request: {
                         opt_context: 'echo',
