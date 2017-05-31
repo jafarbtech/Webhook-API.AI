@@ -58,7 +58,7 @@ var invokeAndGetResponse = function(city,callback){
                 res.on('end', function() {
                     var fbResponse = JSON.parse(body);
                     console.log("Got a response: ", body);
-                    speech = 'Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature;
+                    var speech = 'Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature;
                     callback(null,speech);
                 });
             }).on('error', function(e) {
