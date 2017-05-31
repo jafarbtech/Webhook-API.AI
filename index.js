@@ -33,7 +33,7 @@ restService.post('/echo', function(req, res) {
                     body += chunk;
                 });
 
-                res.on('end', function() {
+                res.on('end', function(res) {
                     var fbResponse = JSON.parse(body);
                     speech = 'Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature;
                     //console.log("Got a response: ", body);
@@ -44,7 +44,7 @@ restService.post('/echo', function(req, res) {
                         source: 'webhook-echo-sample'
                     });
                 });
-            }).on('error', function(e) {
+            }).on('error', function(e,res) {
                 console.log("Got an error: ", e);
                 return res.json({
                     speech: speech,
