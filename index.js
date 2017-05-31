@@ -34,7 +34,7 @@ restService.post('/echo', function(req, res) {
                 });
 
                 res.on('end', function() {
-                    speech = 'Today in ';  // + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature
+                    speech = 'Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature;
                     var fbResponse = JSON.parse(body);
                     console.log("Got a response: ", body);
                     console.log("speech: ", speech);
