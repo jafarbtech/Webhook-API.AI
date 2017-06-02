@@ -36,7 +36,7 @@ restService.post('/echo', function(req, res) {
             }
         });
     } else if (req.body.result.action === 'weather') {
-        var speech = 'Seems like some problem. Speak1 again.';
+        var speech = 'Seems like some problem. Speak again.';
         if (req.body.result && req.body.result.parameters && req.body.result.parameters.city) {
             var url = 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text=%27' + escape(req.body.result.parameters.city) + '%27)&format=json';
             //console.log("url: ", url);
