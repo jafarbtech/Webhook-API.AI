@@ -49,7 +49,7 @@ restService.post('/echo', function(req, res) {
 
                 resp.on('end', function() {
                     var fbResponse = JSON.parse(body);
-                    speech = 'Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + ' ' + fbResponse.query.results.channel.units.temperature+' ('+((5/9) * (fbResponse.query.results.channel.item.condition.temp-32)).toFixed(2)+' C), the humidity is ' + fbResponse.query.results.channel.atmosphere.humidity + '%, the wind speed is ' + fbResponse.query.results.channel.wind.speed + ' ' + fbResponse.query.results.channel.units.speed + ' ('+(fbResponse.query.results.channel.wind.speed/0.62137).toFixed(2)+' kmph). Would you like to know more?';
+                    speech = 'Today in ' + fbResponse.query.results.channel.location.city + ': ' + fbResponse.query.results.channel.item.condition.text + ', the temperature is ' + fbResponse.query.results.channel.item.condition.temp + '° fahrenheit that is '+((5/9) * (fbResponse.query.results.channel.item.condition.temp-32)).toFixed(2)+'° C, the humidity is ' + fbResponse.query.results.channel.atmosphere.humidity + '%, the wind speed is ' + fbResponse.query.results.channel.wind.speed + ' ' + fbResponse.query.results.channel.units.speed + ' I mean '+(fbResponse.query.results.channel.wind.speed/0.62137).toFixed(2)+' kilometer per hour. Would you like to know more?';
                     //console.log("Got a response: ", body);
                     console.log("speech: ", speech);
                     return res.json({
