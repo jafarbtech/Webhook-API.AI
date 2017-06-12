@@ -56,7 +56,7 @@ restService.post('/echo', function(req, res) {
                     console.log("speech: ", speech);
                     return res.json({
                         speech: speech,
-                        displayText: speech,
+                        displayText: displayText==''?speech:displayText,
                         source: 'webhook-echo-sample'
                     });
                 });
@@ -64,7 +64,7 @@ restService.post('/echo', function(req, res) {
                 console.log("Got an error: ", e);
                 return res.json({
                     speech: speech,
-                    displayText: displayText==''?speech:displayText,
+                    displayText: speech,
                     source: 'webhook-echo-sample'
                 });
             });
